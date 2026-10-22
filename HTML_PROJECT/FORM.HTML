@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+    <form action="/RAJPUT.PHP" > 
+       
+        <!-- Text Inputs -->
+        <input type="text" placeholder="ENTER YOUR NAME" name="name"><br><br>
+        <input type="text" placeholder="ENTER YOUR FATHER'S NAME" name="father_name"><br><br>
+        <input type="text" placeholder="ENTER YOUR MOTHER'S NAME" name="mother_name"><br><br>
+        <input type="text" placeholder="COLLEGE NAME" name="college_name"><br><br>
+        <input type="text" placeholder="CASTE" name="caste"><br><br>
+
+        <!-- Gender Selection -->
+        <p><strong>GENDER:</strong></p>
+
+        <label for="gender_male">
+            <input type="radio" name="gender" value="MALE" id="gender_male"> MALE
+        </label>
+        <label for="gender_female">
+            <input type="radio" name="gender" value="FEMALE" id="gender_female"> FEMALE
+        </label>
+        
+        <br><br>
+        
+        <!-- Subject Selection -->
+        <p><strong>SUBJECTS:</strong></p>
+        
+        <label for="sub_maths"> 
+            <input type="checkbox" name="subject[]" value="MATHS" id="sub_maths"> MATHS
+        </label><br><br>
+
+        <label for="sub_physics"> 
+            <input type="checkbox" name="subject[]" value="PHYSICS" id="sub_physics"> PHYSICS
+        </label><br><br>
+
+        <label for="sub_chemistry"> 
+            <input type="checkbox" name="subject[]" value="CHEMISTRY" id="sub_chemistry"> CHEMISTRY
+        </label><br><br>
+
+        <label for="sub_biology"> 
+            <input type="checkbox" name="subject[]" value="BIOLOGY" id="sub_biology"> BIOLOGY
+        </label><br><br>
+
+        <!-- City Dropdown -->
+        <label for="city">SELECT YOUR CITY:</label><br> <br>
+        <select name="city" id="city">
+            <option value=""disabled selected>Select your city</option>
+            <option value="DARBHANGA">DARBHANGA</option>
+            <option value="MADHUBANI">MADHUBANI</option>
+            <option value="SAMASTIPUR">SAMASTIPUR</option>
+            <option value="SAKRI">SAKRI</option>
+        </select>
+        <br><br>
+
+        <!-- Feedback -->
+        <label for="feedback">FEEDBACK:</label><br>
+        <textarea name="feedback" id="feedback" placeholder="Please add feedback"></textarea>
+        <br><br>
+        
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

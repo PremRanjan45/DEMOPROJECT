@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday My Love, AK ❤️</title>
+    <style>
+        /* Base Setup */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background: radial-gradient(circle, #38081f 0%, #0a0104 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: 'Georgia', serif;
+            perspective: 2000px;
+        }
+
+        /* Ambient Sparkles & Confetti feel */
+        .sparkles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.04) 2px, transparent 2px);
+            background-size: 30px 30px;
+            pointer-events: none;
+            opacity: 0.6;
+            animation: sparklePulse 4s ease-in-out infinite alternate;
+        }
+        @keyframes sparklePulse {
+            0% { opacity: 0.3; transform: scale(1); }
+            100% { opacity: 0.8; transform: scale(1.05); }
+        }
+
+        /* Interactive Card Container */
+        .card-container {
+            width: 380px;
+            height: 540px;
+            position: relative;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            transition: transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+            animation: cardEntrance 1.5s ease-out forwards, floating 6s ease-in-out infinite;
+        }
+
+        /* Card Animation */
+        @keyframes cardEntrance {
+            0% { opacity: 0; transform: translateY(60px) rotateY(-180deg) scale(0.8); }
+            100% { opacity: 1; transform: translateY(0) rotateY(0deg) scale(1); }
+        }
+
+        /* 3D Floating Effect */
+        @keyframes floating {
+            0%, 100% { transform: translateY(0) rotateX(0deg) rotateY(0deg); }
+            50% { transform: translateY(-12px) rotateX(3deg) rotateY(5deg); }
+        }
+
+        /* Flipped State */
+        .card-container.flipped {
+            transform: rotateY(180deg) !important;
+            animation: floatingFlipped 6s ease-in-out infinite !important;
+        }
+
+        @keyframes floatingFlipped {
+            0%, 100% { transform: rotateY(180deg) translateY(0) rotateX(0) rotateY(180deg); }
+            50% { transform: rotateY(180deg) translateY(-12px) rotateX(-3deg) rotateY(185deg); }
+        }
+
+        /* Card Faces */
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8), 0 5px 20px rgba(239,68,68,0.3);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            overflow: hidden;
+            padding: 24px;
+        }
+
+        /* Golden Border Details */
+        .border-deco {
+            position: absolute;
+            inset: 10px;
+            border: 1px dashed rgba(251, 191, 36, 0.5);
+            border-radius: 12px;
+            pointer-events: none;
+        }
+        .border-deco::before, .border-deco::after {
+            content: '✨';
+            position: absolute;
+            font-size: 20px;
+        }
+        .border-deco::before { top: -12px; left: -12px; }
+        .border-deco::after { bottom: -12px; right: -12px; }
+
+        /* FRONT FACE (Birthday Intro & AK) */
+        .front {
+            background: linear-gradient(135deg, #4a0d24 0%, #17030b 100%);
+            z-index: 2;
+        }
+
+        .front::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top, rgba(255,215,0,0.15) 0%, rgba(0,0,0,0) 70%);
+            pointer-events: none;
+        }
+
+        .bday-text {
+            font-family: 'Georgia', cursive;
+            font-style: italic;
+            font-size: 32px;
+            color: #fcd34d;
+            margin-bottom: 5px;
+            text-shadow: 0 0 15px rgba(252, 211, 77, 0.8);
+            transform: translateZ(40px);
+        }
+
+        /* Huge bold 3D "AK" text */
+        .big-ak {
+            font-size: 90px;
+            font-weight: 900;
+            background: linear-gradient(to bottom, #fff5d1 0%, #fbbf24 40%, #d97706 70%, #5c2008 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 
+                0px 3px 0px #78350f, 
+                0px 6px 0px #451a03, 
+                0px 10px 15px rgba(0,0,0,0.9),
+                0px 0px 30px rgba(251, 191, 36, 0.4);
+            letter-spacing: 5px;
+            margin-bottom: 15px;
+            transform: translateZ(60px);
+            font-family: 'Times New Roman', serif;
+        }
+
+        .front-deco-text {
+            font-size: 14px;
+            letter-spacing: 5px;
+            color: #fda4af;
+            text-transform: uppercase;
+            font-weight: bold;
+            text-shadow: 0 0 8px rgba(253,164,175,0.6);
+            margin-bottom: 25px;
+            transform: translateZ(30px);
+        }
+
+        /* Glowing Heart */
+        .heart-icon {
+            font-size: 40px;
+            filter: drop-shadow(0 0 15px rgba(239, 68, 68, 1));
+            animation: pulse 1.2s infinite alternate;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.2); }
+        }
+
+        /* BACK FACE (Birthday Message) */
+        .back {
+            background: linear-gradient(135deg, #17030b 0%, #4a0d24 100%);
+            transform: rotateY(180deg);
+        }
+
+        .scroll-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            color: #ffe4e6;
+            transform: translateZ(35px);
+        }
+
+        .back .my-love {
+            font-family: 'Georgia', cursive;
+            font-style: italic;
+            font-size: 30px;
+            color: #fcd34d;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(252, 211, 77, 0.5);
+        }
+
+        .back p {
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 12px;
+            font-weight: 300;
+            color: #fed7aa;
+            max-width: 95%;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .emphasis {
+            font-family: 'Georgia', cursive;
+            font-style: italic;
+            font-size: 18px;
+            color: #fb7185;
+            font-weight: bold;
+        }
+
+        /* Dedication Footer */
+        .dedication {
+            margin-top: 15px;
+            font-size: 16px;
+            color: #fda4af;
+            letter-spacing: 1px;
+            border-top: 1px dashed rgba(253, 164, 175, 0.4);
+            width: 85%;
+            padding-top: 12px;
+            text-shadow: 0 0 5px rgba(253, 164, 175, 0.4);
+        }
+
+        .dedication span {
+            font-size: 24px;
+            color: #fcd34d;
+            font-weight: bold;
+            display: block;
+            margin-top: 5px;
+        }
+
+        /* Hint */
+        .action-hint {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #fcd34d;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.9;
+            pointer-events: none;
+            animation: bounceIn 2s infinite;
+        }
+        @keyframes bounceIn {
+            0%, 100% { transform: translate(-50%, 0); }
+            50% { transform: translate(-50%, -8px); }
+        }
+
+        /* Magic Birthday Particles */
+        .sparkle-particles {
+            position: absolute;
+            pointer-events: none;
+            border-radius: 50%;
+            background: radial-gradient(circle, #fcd34d 0%, transparent 70%);
+            animation: animateParticles 2.5s infinite linear;
+        }
+        @keyframes animateParticles {
+            0% { transform: translateY(0) scale(0); opacity: 0; }
+            50% { opacity: 0.9; }
+            100% { transform: translateY(-120px) scale(1.5); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sparkles"></div>
+
+    <div class="card-container" id="flipCard" onclick="toggleFlip()">
+        <!-- Front side with Birthday greeting & AK -->
+        <div class="card-face front">
+            <div class="border-deco"></div>
+            <div class="bday-text">Happy Birthday</div>
+            <div class="big-ak">AK</div>
+            <!-- <div class="front-deco-text">My Beautiful World</div> -->
+            <div class="heart-icon">🎂❤️</div>
+        </div>
+
+        <!-- Back side with Birthday Message -->
+        <div class="card-face back">
+            <div class="border-deco"></div>
+            <div class="scroll-container">
+                <div class="my-love">Happy Birthday, My Love! 🎉</div>
+                <p>As you celebrate another beautiful year, I wish you the absolute best in everything you do.</p>
+                <p>May you be blessed with perfect health, incredible achievements, and endless happiness.</p>
+                <p>I hope your life is nothing short of <span class="emphasis">magical</span> and that you always find time to truly <span class="emphasis">enjoy</span> the journey.</p>
+                <p>I’ll always be <span class="emphasis">cheering</span> you on!</p>
+                
+                <div class="dedication">
+                    For my love <span>AK ❤️</span>
+                </div>
+            </div>
+        </div>
+        <div class="action-hint" id="hint">Tap Card to Open</div>
+    </div>
+
+    <!-- Animation & Flip Scripts -->
+    <script>
+        const card = document.getElementById('flipCard');
+        const hint = document.getElementById('hint');
+
+        // Auto Flip Script: 3 Second tak AK dikhega, phir birthday message par flip ho jayega
+        setTimeout(() => {
+            if(!card.classList.contains('flipped')) {
+                card.classList.add('flipped');
+                hint.innerText = "Tap Card to Flip back";
+            }
+        }, 3000);
+
+        function toggleFlip() {
+            card.classList.toggle('flipped');
+            if(card.classList.contains('flipped')) {
+                hint.innerText = "Tap Card to see AK";
+            } else {
+                hint.innerText = "Tap Card to see Message";
+            }
+        }
+
+        // Magic Floating Sparkles
+        function generateSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.classList.add('sparkle-particles');
+            const size = Math.random() * 6 + 3;
+            sparkle.style.width = size + 'px';
+            sparkle.style.height = size + 'px';
+            sparkle.style.left = Math.random() * 100 + '%';
+            sparkle.style.bottom = Math.random() * 20 + '%';
+            
+            const cardBack = document.querySelector('.back');
+            const cardFront = document.querySelector('.front');
+            cardBack.appendChild(sparkle.cloneNode(true));
+            cardFront.appendChild(sparkle);
+
+            setTimeout(() => {
+                const elements = document.querySelectorAll('.sparkle-particles');
+                if(elements.length > 30) {
+                    elements[0].remove();
+                    elements[1].remove();
+                }
+            }, 2500);
+        }
+
+        setInterval(generateSparkle, 300);
+    </script>
+</body>
+</html>

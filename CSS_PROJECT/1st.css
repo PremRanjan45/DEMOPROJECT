@@ -1,0 +1,26 @@
+#box{
+    background-color: rgb(7, 255, 172);
+}
+.heading{
+    color: rgb(127, 255, 212);
+}
+button{
+    background-color: rgb(127, 255, 212);
+    border-color: rgb(255, 0, 0);
+}
+#h45{
+    text-align: center;
+    text-decoration: blue underline;
+    font-weight: 600;
+}
+p{
+    font-family: cursive;
+    text-transform: capitalize;
+    color: rgb(119, 0, 255);
+}
+#OUTER{
+    font-size: 25px;
+}
+#INNER{
+    font-size: 10px;
+}
